@@ -1,49 +1,65 @@
+
+
+@registrationUrl=http://localhost:8883
+@allocationsUrl=http://localhost:8881
+@backlogUrl=http://localhost:8882
+
+@timesheetsUrl=http://localhost:8884
+
 ### Create user
 POST {{registrationUrl}}/registration
 Content-Type: application/json
 
-{"name": "Sally"}
+{"name": "shyam sundar"}
 
 ### Get user
-GET {{registrationUrl}}/users/USER-ID
+###GET {{registrationUrl}}/users/USER-ID
+GET {{registrationUrl}}/users/4
+Content-Type: application/json
 
 ### Get account
-GET {{registrationUrl}}/accounts?ownerId=USER-ID
+###GET {{registrationUrl}}/accounts?ownerId=USER-ID
+GET {{registrationUrl}}/accounts?ownerId=4
+Content-Type: application/json
 
 ### Create project
 POST {{registrationUrl}}/projects
 Content-Type: application/json
 
-{"name": "Basket Weaving III", "accountId": ACCOUNT-ID}
+{"name": "Basket Weaving III", "accountId": 2}
+###{"name": "Basket Weaving III", "accountId": 701}
+
+
 
 ### Get projects
-GET {{registrationUrl}}/projects?accountId=ACCOUNT-ID
+GET {{registrationUrl}}/projects?accountId=1
 
 ### Create allocation
 POST {{allocationsUrl}}/allocations
 Content-Type: application/json
 
-{"projectId": PROJECT-ID, "userId": USER-ID, "firstDay": "2015-05-17", "lastDay": "2015-05-18"}
+{"projectId": 3, "userId": 3, "firstDay": "2015-05-17", "lastDay": "2015-05-18"}
+###{"projectId": PROJECT-ID, "userId": USER-ID, "firstDay": "2015-05-17", "lastDay": "2015-05-18"}
 
 ### Get allocations
-GET {{allocationsUrl}}/allocations?projectId=PROJECT-ID
+GET {{allocationsUrl}}/allocations?projectId=3
 
 ### Create story
 POST {{backlogUrl}}/stories
 Content-Type: application/json
 
-{"projectId": PROJECT-ID, "name": "Find some reeds"}
+{"projectId": 3, "name": "Find some reeds"}
 
 ### Get stories
-GET {{backlogUrl}}/stories?projectId=PROJECT-ID
+GET {{backlogUrl}}/stories?projectId=3
 
 ### Create timesheet
 POST {{timesheetsUrl}}/time-entries/
 Content-Type: application/json
 
-{"projectId": PROJECT-ID, "userId": USER-ID, "date": "2015-05-17", "hours": 6}
+{"projectId": 3, "userId": 1, "date": "2015-05-17", "hours": 6}
 
 ### Get timesheets
-GET {{timesheetsUrl}}/time-entries?userId=USER-ID
+GET {{timesheetsUrl}}/time-entries?userId=1
 
 ###
